@@ -1,0 +1,20 @@
+{
+  message_id: 57,
+  from: {
+    id: 40131852,
+    is_bot: false,
+    first_name: 'Yonatan',
+    last_name: 'Kravitz',
+    username: 'Kravitzy',
+    language_code: 'en'
+  },
+  chat: {
+    id: 40131852,
+    first_name: 'Yonatan',
+    last_name: 'Kravitz',
+    username: 'Kravitzy',
+    type: 'private'
+  },
+  date: 1625597677,
+  text: 'hi'
+}
