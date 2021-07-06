@@ -1,5 +1,6 @@
 const { gameDeal } = require("./utils/cheapshark");
 
+const bodyParser = require('body-parser');
 // const TelegramBot = require("node-telegram-bot-api");
 // const token = process.env.TELEGRAM_BOT_TOKEN;
 // const bot = new TelegramBot(token, { polling: false });
@@ -8,7 +9,7 @@ const express = require("express");
 const port = 3000;
 
 const app = express();
-app.use(express.json());
+app.use(bodyParser.json());
 
 app.post("/bot", async (req, res) => {
   try {
