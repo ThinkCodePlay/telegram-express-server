@@ -12,9 +12,11 @@ app.use(express.json());
 
 app.post("/bot", async (req, res) => {
   try {
-    const chat_id = req.body.message.chat.id;
-    const text = req.body.message.text;
-    return sendText(res, chat_id, `Hi there I got your message: ${text}`);
+      console.log('im in bot');
+      console.log('req.body', req.body);
+    // const chat_id = req.body.message.chat.id;
+    // const text = req.body.message.text;
+    return sendText(res, 40131852, `Hi there I got your message: im a bot`);
   } catch (error) {
       return res.status(502).send({error, req, res})
   }
