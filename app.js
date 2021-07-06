@@ -1,8 +1,8 @@
 const { gameDeal } = require("./utils/cheapshark");
 
-const TelegramBot = require("node-telegram-bot-api");
-const token = process.env.TELEGRAM_BOT_TOKEN;
-const bot = new TelegramBot(token, { polling: false });
+// const TelegramBot = require("node-telegram-bot-api");
+// const token = process.env.TELEGRAM_BOT_TOKEN;
+// const bot = new TelegramBot(token, { polling: false });
 
 const express = require("express");
 const port = 3000;
