@@ -1,15 +1,14 @@
 const { gameDeal } = require("./utils/cheapshark");
 
-const bodyParser = require('body-parser');
 // const TelegramBot = require("node-telegram-bot-api");
 // const token = process.env.TELEGRAM_BOT_TOKEN;
 // const bot = new TelegramBot(token, { polling: false });
 
 const express = require("express");
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.post("/bot", async (req, res) => {
   try {
@@ -17,7 +16,7 @@ app.post("/bot", async (req, res) => {
       console.log('req.body', req.body);
     // const chat_id = req.body.message.chat.id;
     // const text = req.body.message.text;
-    return sendText(res, 40131852, `Hi there I got your message: im a bot`);
+    return sendText(res, chat_id, `Hi there I got your message: ${text}`);
   } catch (error) {
       return res.status(502).send({error, req, res})
   }
