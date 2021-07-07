@@ -39,7 +39,7 @@ app.post("/bot", async (req, res) => {
         break;
     }
   } catch (error) {
-    return res.status(502).send({ error, req, res });
+    return res.status(502).send(error);
   }
 });
 
@@ -47,7 +47,7 @@ function sendText(res, chat_id, text) {
   return res.status(200).send({
     method: "sendMessage",
     chat_id,
-    text: text,
+    text
   });
 }
 
