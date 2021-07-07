@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/bot", async (req, res) => {
   try {
+    console.log('req', req);
     const chat_id = req.body.message.chat.id;
     const text = req.body.message.text;
     const first_name = req.body.message.from.first_name;
