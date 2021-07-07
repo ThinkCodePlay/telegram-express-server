@@ -44,14 +44,19 @@ app.post("/bot", async (req, res) => {
           );
           break;
       }
-    }
-    else {
-      console.log("not a valid message");
-      return sendText(
-        res,
-        chat_id,
-        `not a valid message`
-      );
+    } else {
+      const isTelegramUpdate = req.body.chat && req.body.chat.id;
+      if (isTelegramUpdate) {
+        const chat_id = req.body.chat.id;
+        const text = req.body.text;
+        const first_name = req.body.chat.first_name;
+        console.log(chat_id, text, first_name);
+        return sendText(
+          res,
+          chat_id,
+          `Hi ${first_name}, please send your request again`
+        );
+      }
     }
   } catch (error) {
     console.log("error", error);
