@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/bot", async (req, res) => {
   try {
+    console.log(req.body);
     const isTelegramMessage =
       req.body &&
       req.body.message &&
