@@ -15,13 +15,14 @@ app.post("/bot", async (req, res) => {
     const words = text.split(" ");
     const firstWord = words.shift();
     const gameName = words.join(" ");
+
     switch (firstWord) {
       case "game":
         const deal = await gameDeal(gameName);
         return sendText(
           res,
           chat_id,
-          `Here's the best deal i found: \n${deal}`
+          deal
         );
         break;
 
@@ -29,7 +30,7 @@ app.post("/bot", async (req, res) => {
         return sendText(
           res,
           chat_id,
-          `Hi ${first_name}, to find a game deal type game as a first word followed by the game title: \ngame <game title>`
+          `Hi ${first_name}, to find a game deal type 'game' as a first word followed by the game title: \ngame <game title>`
         );
         break;
     }
