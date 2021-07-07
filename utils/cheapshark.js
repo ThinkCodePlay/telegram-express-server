@@ -7,7 +7,6 @@ const gameDeal = async (gameName) => {
     );
 
     if (response.data.length > 0) {
-      console.log(response.data[0]);
       const gameData = `Game name: ${response.data[0].external}. \nCheapest price found: ${response.data[0].cheapest}. \nDeal Link: https://www.cheapshark.com/redirect?dealID=${response.data[0].cheapestDealID}`;
       return gameData;
     } else {
