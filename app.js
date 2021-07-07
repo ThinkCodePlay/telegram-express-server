@@ -1,9 +1,14 @@
 const { gameDeal } = require("./utils/cheapshark");
 
 const express = require("express");
+const bodyParser = require('body-parser');
+
 const port = process.env.PORT || 3000;
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.post("/bot", async (req, res) => {
   try {
