@@ -1,62 +1,37 @@
 const { gameDeal } = require("./utils/cheapshark");
 
 const express = require("express");
-const bodyParser = require("body-parser");
 
 const port = process.env.PORT || 3000;
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.post("/bot", async (req, res) => {
   try {
-    console.log(req.body);
-    const isTelegramMessage =
-      req.body &&
-      req.body.message &&
-      req.body.message.chat &&
-      req.body.message.chat.id;
-    if (isTelegramMessage) {
-      const chat_id = req.body.message.chat.id;
-      const text = req.body.message.text;
-      const first_name = req.body.message.from.first_name;
-      console.log(chat_id, text, first_name);
+    const chat_id = req.body.message.chat.id;
+    const text = req.body.message.text;
+    const first_name = req.body.message.from.first_name;
 
-      const words = text.split(" ");
-      const firstWord = words.shift();
-      const gameName = words.join(" ");
-      console.log(words, firstWord, gameName);
+    const words = text.split(" ");
+    const firstWord = words.shift();
+    const gameName = words.join(" ");
 
-      switch (firstWord) {
-        case "game":
-          console.log("game");
-          const deal = await gameDeal(gameName);
-          return sendText(res, chat_id, deal);
-          break;
+    switch (firstWord) {
+      case "game":
+        console.log("game");
+        const deal = await gameDeal(gameName);
+        return sendText(res, chat_id, deal);
+        break;
 
-        default:
-          console.log("default");
-          return sendText(
-            res,
-            chat_id,
-            `Hi ${first_name}, to find a game deal type 'game' as a first word followed by the game title: \ngame <game title>`
-          );
-          break;
-      }
-    } else {
-      const isTelegramUpdate = req.body.chat && req.body.chat.id;
-      if (isTelegramUpdate) {
-        const chat_id = req.body.chat.id;
-        const text = req.body.text;
-        const first_name = req.body.chat.first_name;
-        console.log(chat_id, text, first_name);
+      default:
+        console.log("default");
         return sendText(
           res,
           chat_id,
-          `Hi ${first_name}, please send your request again`
+          `Hi ${first_name}, to find a game deal type 'game' as a first word followed by the game title: \ngame <game title>`
         );
-      }
+        break;
     }
   } catch (error) {
     console.log("error", error);
