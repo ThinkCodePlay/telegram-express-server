@@ -33,7 +33,8 @@ app.post("/bot", async (req, res) => {
         );
         break;
     }
-  } catch (error) {
+  } 
+  catch (error) {
     console.log("error", error);
     return res.status(502).send(error);
   }
